@@ -20,7 +20,6 @@ class CharactersViewController: UIViewController, UITableViewDelegate, UITableVi
     var isLoadingCharacters = false
     var currentPage = 0
     var total = 0
-    var characterChoose: MarvelCharacter? = nil
     var characterSearch = ""
     
     override func viewDidLoad() {
@@ -101,6 +100,9 @@ class CharactersViewController: UIViewController, UITableViewDelegate, UITableVi
         //print("hero: ", self.characters[indexPath.row])
         
         if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "characterDetailsViewController") as? CharacterDetailsViewController {
+            
+            viewController.characterChoose = self.characters[indexPath.row]
+            
             if let navigator = navigationController {
                 navigator.pushViewController(viewController, animated: true)
             }

@@ -7,29 +7,62 @@
 //
 
 import UIKit
+import EZYGradientView
 
 class CharacterDetailsViewController: UIViewController {
-
+    
+    @IBOutlet weak var bigImg: UIImageView!
+    @IBOutlet weak var labelDescription: UILabel!
+    @IBOutlet weak var labelName: UILabel!
+    
+    var characterChoose: MarvelCharacter? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        let gradientView = EZYGradientView()
+        gradientView.frame = view.bounds
+        gradientView.firstColor = UIColor(red: 216 / 255, green: 37 / 255, blue: 47 / 255, alpha: 1.0)
+        gradientView.secondColor = UIColor(red: 237 / 255, green: 33 / 255, blue: 124 / 255, alpha: 1.0)
+        gradientView.angleº = 0
+        gradientView.colorRatio = 0.5
+        gradientView.fadeIntensity = 1
+        view.insertSubview(gradientView, at: 0)
+        
+        if let hero = characterChoose {
+            
+            labelName.text = hero.name
+            labelDescription.text = !hero.description.isEmpty ? hero.description : "--"
+            
+            if let url = URL(string: hero.thumbnail.getImageURL()){
+                
+                bigImg.kf.indicatorType = .activity
+                bigImg.kf.setImage(with: url)
+                
+            } else {
+                
+                bigImg.image = UIImage(named: "marvelAvatar")
+                
+            }
+            
+        }
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

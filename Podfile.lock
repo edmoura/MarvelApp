@@ -1,0 +1,55 @@
+PODS:
+  - Alamofire (4.7.2)
+  - AlamofireObjectMapper (5.0.0):
+    - Alamofire (~> 4.1)
+    - ObjectMapper (~> 3.0)
+  - CryptoSwift (0.9.0)
+  - EZYGradientView (1.5.1)
+  - Hero (1.2.0)
+  - Keys (1.0.1)
+  - Kingfisher (4.7.0)
+  - ObjectMapper (3.1.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - AlamofireObjectMapper
+  - CryptoSwift
+  - EZYGradientView (from `https://github.com/Niphery/EZYGradientView`)
+  - Hero
+  - Keys (from `Pods/CocoaPodsKeys`)
+  - Kingfisher
+  - ObjectMapper
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Alamofire
+    - AlamofireObjectMapper
+    - CryptoSwift
+    - Hero
+    - Kingfisher
+    - ObjectMapper
+
+EXTERNAL SOURCES:
+  EZYGradientView:
+    :git: https://github.com/Niphery/EZYGradientView
+  Keys:
+    :path: Pods/CocoaPodsKeys
+
+CHECKOUT OPTIONS:
+  EZYGradientView:
+    :commit: e8cc7bf2fb77557af214289288ebc96776ffbf57
+    :git: https://github.com/Niphery/EZYGradientView
+
+SPEC CHECKSUMS:
+  Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
+  AlamofireObjectMapper: 5fafc816351cbbc0d486611aaeba7461c0cbad49
+  CryptoSwift: bca8c5b653dcc2d9734409242a070ff53bafac86
+  EZYGradientView: f13e7a9e774b906c66d617fb04a13c8853ba25b4
+  Hero: 33dadf2cd1c98af71e213dcbc2902e6e03622a4e
+  Keys: a576f4c9c1c641ca913a959a9c62ed3f215a8de9
+  Kingfisher: da6b005aa96d37698e3e4f1ccfe96a5b9bbf27d6
+  ObjectMapper: 20505058f54e5c3ca69e1d6de9897d152a5369a6
+
+PODFILE CHECKSUM: 6e5c79054e20b290b6f952ecb5a8424eee784e9e
+
+COCOAPODS: 1.5.0

@@ -49,3 +49,7 @@ class MarvelAPIRequest: MarvelRequest {
     }
     
 }
+
+protocol MarvelAPICalls {
+    func characters(name: String?, onComplete: @escaping(_ response:ResponseMarvelInfo) -> Void)
+}

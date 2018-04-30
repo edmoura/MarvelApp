@@ -117,7 +117,7 @@
                                 <rect key="frame" x="0.0" y="603" width="375" height="50"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="H16-jT-XrD">
-                                        <rect key="frame" x="98" y="15" width="181" height="20"/>
+                                        <rect key="frame" x="97" y="15" width="181" height="20"/>
                                         <subviews>
                                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="XfF-RL-L9G">
                                                 <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
@@ -140,7 +140,7 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" alpha="0.0" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="RZh-S0-BfT">
-                                <rect key="frame" x="115" y="268" width="146" height="67"/>
+                                <rect key="frame" x="115.5" y="268.5" width="146" height="67"/>
                                 <subviews>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="bm5-u7-t13">
                                         <rect key="frame" x="54.5" y="0.0" width="37" height="37"/>
@@ -161,7 +161,7 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="wJr-yN-eoL">
-                                <rect key="frame" x="114" y="314" width="148.5" height="21"/>
+                                <rect key="frame" x="113.5" y="314" width="148.5" height="21"/>
                                 <subviews>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Pku-rS-bBX">
                                         <rect key="frame" x="0.0" y="0.0" width="20" height="21"/>

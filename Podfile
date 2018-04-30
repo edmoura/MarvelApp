@@ -37,9 +37,19 @@ target 'MarvelApp' do
       "MarvelPrivateKey"
   ]}
 
-  
   # Shared pods
   shared_pods
+
+end
+
+target 'MarvelAppTests' do
+
+  use_frameworks!
+
+  pod 'Quick'
+  pod 'Nimble'
+  pod 'Fakery'
+  pod 'ObjectMapper'
 
 end
 

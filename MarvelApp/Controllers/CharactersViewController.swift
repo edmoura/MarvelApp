@@ -22,10 +22,12 @@ class CharactersViewController: UIViewController, UITableViewDelegate, UITableVi
     let fetchCharacter = MarvelAPIRequest()
     var characters: [MarvelCharacter] = []
     var isLoadingCharacters = false
+    var once = false
+    var isLandscape = true
     var currentPage = 0
     var total = 0
     var characterSearch = ""
-    var once = false
+    var gradientView:EZYGradientView!
     
     override func viewDidLoad() {
         
@@ -35,22 +37,50 @@ class CharactersViewController: UIViewController, UITableViewDelegate, UITableVi
         tableView.dataSource = self
         tableView.estimatedRowHeight = 110
         tableView.rowHeight = UITableViewAutomaticDimension
-        
-        let gradientView = EZYGradientView()
-        gradientView.frame = view.bounds
-        gradientView.firstColor = UIColor(red: 216 / 255, green: 37 / 255, blue: 47 / 255, alpha: 1.0)
-        gradientView.secondColor = UIColor(red: 237 / 255, green: 33 / 255, blue: 124 / 255, alpha: 1.0)
-        gradientView.angleº = 0
-        gradientView.colorRatio = 0.5
-        gradientView.fadeIntensity = 1
-        view.insertSubview(gradientView, at: 0)
-        
+
         setupSearchBar()
         fetchData()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        doGradient(angle: 0)
+        NotificationCenter.default.addObserver(self, selector: #selector(rotated), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        NotificationCenter.default.removeObserver(self, name:  NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+    }
+    
+    private func doGradient(angle:Float) {
+        if gradientView != nil {
+            if view.subviews.contains(gradientView) {
+                gradientView.removeFromSuperview()
+            }
+        }
+        
+        gradientView = EZYGradientView()
+        gradientView.frame = view.bounds
+        gradientView.firstColor = UIColor(red: 216 / 255, green: 37 / 255, blue: 47 / 255, alpha: 1.0)
+        gradientView.secondColor = UIColor(red: 237 / 255, green: 33 / 255, blue: 124 / 255, alpha: 1.0)
+        gradientView.angleº = angle
+        gradientView.colorRatio = 0.5
+        gradientView.fadeIntensity = 1
+        view.insertSubview(gradientView, at: 0)
+    }
+    
+    @objc private func rotated() {
+        switch UIDevice.current.orientation {
+        case .landscapeLeft, .landscapeRight:
+            doGradient(angle: 0)
+        default:
+             doGradient(angle: 0)
+        }
     }
     
     private func setupSearchBar() {
@@ -81,10 +111,10 @@ class CharactersViewController: UIViewController, UITableViewDelegate, UITableVi
                 self.isLoadingCharacters = false
                 self.hideLoadingMoreCharacters()
                 self.hideLoadingHeroes()
-
+                
                 /*print("success")
-                print("total: \(self.total)")
-                print("characters: \(self.characters.count)")*/
+                 print("total: \(self.total)")
+                 print("characters: \(self.characters.count)")*/
                 
             case .serverError(let description):
                 print("Server error: \(description) \n")
@@ -163,23 +193,21 @@ class CharactersViewController: UIViewController, UITableViewDelegate, UITableVi
             view.endEditing(true)
             showLoadingHeroes()
         }
-        
-        print(" searchBarSearchButtonClicked ")
     }
     
     public func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         view.endEditing(true)
         disposeData()
         searchBar.text = ""
-        print(" searchBarCancelButtonClicked ")
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //print("hero: ", self.characters[indexPath.row])
         
         if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "characterDetailsViewController") as? CharacterDetailsViewController {
             
             viewController.characterChoose = self.characters[indexPath.row]
+            viewController.isLandscape = self.isLandscape
+            view.endEditing(true)
             
             if let navigator = navigationController {
                 navigator.pushViewController(viewController, animated: true)
@@ -192,7 +220,6 @@ class CharactersViewController: UIViewController, UITableViewDelegate, UITableVi
             showLoadingMoreCharacters()
             currentPage += 1
             fetchData()
-            print(" willDisplay ")
         }
     }
     

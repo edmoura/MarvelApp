@@ -16,18 +16,11 @@ class CharacterDetailsViewController: UIViewController {
     @IBOutlet weak var labelName: UILabel!
     
     var characterChoose: MarvelCharacter? = nil
+    var gradientView:EZYGradientView!
+    var isLandscape = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let gradientView = EZYGradientView()
-        gradientView.frame = view.bounds
-        gradientView.firstColor = UIColor(red: 216 / 255, green: 37 / 255, blue: 47 / 255, alpha: 1.0)
-        gradientView.secondColor = UIColor(red: 237 / 255, green: 33 / 255, blue: 124 / 255, alpha: 1.0)
-        gradientView.angleº = 0
-        gradientView.colorRatio = 0.5
-        gradientView.fadeIntensity = 1
-        view.insertSubview(gradientView, at: 0)
         
         if let hero = characterChoose {
             
@@ -47,9 +40,46 @@ class CharacterDetailsViewController: UIViewController {
             
         }
         
-        self.navigationItem.setRightBarButton(UIBarButtonItem(barButtonSystemItem: .action, target: self, action:#selector(share(_:))), animated: true)
-        
+      self.navigationItem.setRightBarButton(UIBarButtonItem(barButtonSystemItem: .action, target: self, action:#selector(share(_:))), animated: true)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        doGradient(angle: 0)
+        NotificationCenter.default.addObserver(self, selector: #selector(rotated), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        NotificationCenter.default.removeObserver(self, name:  NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+    }
+    
+    private func doGradient(angle:Float) {
+        if gradientView != nil {
+            if view.subviews.contains(gradientView) {
+                gradientView.removeFromSuperview()
+            }
+        }
+        
+        gradientView = EZYGradientView()
+        gradientView.frame = view.bounds
+        gradientView.firstColor = UIColor(red: 216 / 255, green: 37 / 255, blue: 47 / 255, alpha: 1.0)
+        gradientView.secondColor = UIColor(red: 237 / 255, green: 33 / 255, blue: 124 / 255, alpha: 1.0)
+        gradientView.angleº = angle
+        gradientView.colorRatio = 0.5
+        gradientView.fadeIntensity = 1
+        view.insertSubview(gradientView, at: 0)
+    }
+    
+    @objc private func rotated() {
+        switch UIDevice.current.orientation {
+        case .landscapeLeft, .landscapeRight:
+            doGradient(angle: 0)
+        default:
+            doGradient(angle: 0)
+        }
+    }
+    
     
     @objc func share(_ sender:UIBarButtonItem!)
     {

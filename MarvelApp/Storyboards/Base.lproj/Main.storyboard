@@ -175,7 +175,7 @@
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="0.13725490196078433" green="0.12156862745098039" blue="0.12549019607843137" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.84705882349999995" green="0.1450980392" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="wJr-yN-eoL" firstAttribute="top" secondItem="h1h-V4-fdG" secondAttribute="bottom" constant="8.5" id="2od-wa-NtE"/>
                             <constraint firstItem="BcT-oy-7Oi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="2zS-Gb-ci7"/>
@@ -266,7 +266,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.84705882349999995" green="0.1450980392" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="8mT-JG-Fqx" firstAttribute="leading" secondItem="O1z-PE-z8Y" secondAttribute="leading" id="FNb-hO-D2Z"/>
                             <constraint firstItem="O1z-PE-z8Y" firstAttribute="trailing" secondItem="8mT-JG-Fqx" secondAttribute="trailing" id="Vpm-Pj-oPh"/>

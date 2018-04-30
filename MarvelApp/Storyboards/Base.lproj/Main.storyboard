@@ -114,7 +114,7 @@
                                 <rect key="frame" x="0.0" y="603" width="375" height="50"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="H16-jT-XrD">
-                                        <rect key="frame" x="85" y="15" width="206.5" height="20"/>
+                                        <rect key="frame" x="84.5" y="15" width="206.5" height="20"/>
                                         <subviews>
                                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="XfF-RL-L9G">
                                                 <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
@@ -137,7 +137,7 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" alpha="0.0" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="RZh-S0-BfT">
-                                <rect key="frame" x="115" y="268" width="146" height="67"/>
+                                <rect key="frame" x="114.5" y="268.5" width="146" height="67"/>
                                 <subviews>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="bm5-u7-t13">
                                         <rect key="frame" x="54.5" y="0.0" width="37" height="37"/>
@@ -150,18 +150,46 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="marvelLaunchScreen" translatesAutoresizingMaskIntoConstraints="NO" id="h1h-V4-fdG">
+                                <rect key="frame" x="87.5" y="233.5" width="200" height="72"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="72" id="D55-od-ws9"/>
+                                    <constraint firstAttribute="width" constant="200" id="YQC-2P-IUz"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="wJr-yN-eoL">
+                                <rect key="frame" x="113.5" y="314" width="148.5" height="21"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Pku-rS-bBX">
+                                        <rect key="frame" x="0.0" y="0.0" width="20" height="21"/>
+                                    </activityIndicatorView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="loading heroes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cHT-Y3-f2r">
+                                        <rect key="frame" x="30" y="0.0" width="118.5" height="21"/>
+                                        <fontDescription key="fontDescription" name="VAGRoundedBT-Regular" family="VAG Rounded" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="wtM-dn-awO"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.13725490196078433" green="0.12156862745098039" blue="0.12549019607843137" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="wJr-yN-eoL" firstAttribute="top" secondItem="h1h-V4-fdG" secondAttribute="bottom" constant="8.5" id="2od-wa-NtE"/>
                             <constraint firstItem="BcT-oy-7Oi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="2zS-Gb-ci7"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="BcT-oy-7Oi" secondAttribute="bottom" constant="-50" id="6o8-RC-DSn"/>
+                            <constraint firstItem="h1h-V4-fdG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="B7B-Sm-NRr"/>
                             <constraint firstItem="RZh-S0-BfT" firstAttribute="centerX" secondItem="YfK-D2-Ha0" secondAttribute="centerX" id="LK6-Rb-9xD"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="YfK-D2-Ha0" secondAttribute="bottom" id="RdJ-S1-ekM"/>
                             <constraint firstItem="RZh-S0-BfT" firstAttribute="centerY" secondItem="YfK-D2-Ha0" secondAttribute="centerY" id="aUi-Zl-EMB"/>
                             <constraint firstItem="YfK-D2-Ha0" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="eJs-sE-YnD"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="YfK-D2-Ha0" secondAttribute="trailing" id="hkH-Wt-cti"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="BcT-oy-7Oi" secondAttribute="trailing" id="jCY-co-Zvh"/>
+                            <constraint firstItem="h1h-V4-fdG" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-32" id="lvM-xG-Yrc"/>
                             <constraint firstItem="YfK-D2-Ha0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="oqT-mh-8vq"/>
+                            <constraint firstItem="wJr-yN-eoL" firstAttribute="centerX" secondItem="h1h-V4-fdG" secondAttribute="centerX" id="ose-Jl-Ofy"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -169,9 +197,11 @@
                         <barButtonItem key="backBarButtonItem" title="Back" id="8zP-62-1tN"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="imgLaunchScreen" destination="h1h-V4-fdG" id="DZl-tt-CZf"/>
                         <outlet property="infoLoadingCharConstraint" destination="6o8-RC-DSn" id="fpl-Uk-G4M"/>
                         <outlet property="infoLoadingCharacters" destination="BcT-oy-7Oi" id="KEr-6b-eXW"/>
                         <outlet property="searchBar" destination="VE9-fb-McP" id="078-Yp-3S4"/>
+                        <outlet property="stackLaunchScreen" destination="wJr-yN-eoL" id="TjE-1a-hTr"/>
                         <outlet property="stackViewHeroes" destination="RZh-S0-BfT" id="FRS-I0-r8u"/>
                         <outlet property="tableView" destination="YfK-D2-Ha0" id="4H4-OO-mJ0"/>
                     </connections>
@@ -280,4 +310,7 @@
             <point key="canvasLocation" x="136.80000000000001" y="-564.46776611694156"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="marvelLaunchScreen" width="287" height="103"/>
+    </resources>
 </document>

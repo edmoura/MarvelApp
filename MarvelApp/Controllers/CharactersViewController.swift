@@ -16,6 +16,8 @@ class CharactersViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var infoLoadingCharConstraint: NSLayoutConstraint!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var stackViewHeroes: UIStackView!
+    @IBOutlet weak var imgLaunchScreen: UIImageView!
+    @IBOutlet weak var stackLaunchScreen: UIStackView!
     
     let fetchCharacter = MarvelAPIRequest()
     var characters: [MarvelCharacter] = []
@@ -23,6 +25,7 @@ class CharactersViewController: UIViewController, UITableViewDelegate, UITableVi
     var currentPage = 0
     var total = 0
     var characterSearch = ""
+    var once = false
     
     override func viewDidLoad() {
         
@@ -55,7 +58,7 @@ class CharactersViewController: UIViewController, UITableViewDelegate, UITableVi
         
         let searchTextField: UITextField? = searchBar.value(forKey: "searchField") as? UITextField
         if searchTextField!.responds(to: #selector(getter: UITextField.attributedPlaceholder)) {
-            let attributeDict = [NSAttributedStringKey.foregroundColor: UIColor.white.withAlphaComponent(0.5)]
+            let attributeDict = [NSAttributedStringKey.foregroundColor: UIColor.white.withAlphaComponent(0.8)]
             searchTextField!.attributedPlaceholder = NSAttributedString(string: "Search your heroes...", attributes: attributeDict)
         }
     }
@@ -66,16 +69,22 @@ class CharactersViewController: UIViewController, UITableViewDelegate, UITableVi
             switch response{
                 
             case .success(let model):
+                
+                if !self.once {
+                    self.hideFakeLaunchScreen()
+                    self.once = true
+                }
+                
                 self.total = model.data.total
                 self.characters.append(contentsOf: model.data.results)
                 self.tableView.reloadData()
                 self.isLoadingCharacters = false
                 self.hideLoadingMoreCharacters()
                 self.hideLoadingHeroes()
-                
-                print("success")
+
+                /*print("success")
                 print("total: \(self.total)")
-                print("characters: \(self.characters.count)")
+                print("characters: \(self.characters.count)")*/
                 
             case .serverError(let description):
                 print("Server error: \(description) \n")
@@ -97,6 +106,15 @@ class CharactersViewController: UIViewController, UITableViewDelegate, UITableVi
         characterSearch = ""
         fetchData()
         showLoadingHeroes()
+    }
+    
+    private func hideFakeLaunchScreen(){
+        UIView.animate(withDuration: 0.25, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+            self.imgLaunchScreen.alpha = 0
+            self.stackLaunchScreen.alpha = 0
+        }) { (success) in
+            
+        }
     }
     
     private func showLoadingMoreCharacters() {

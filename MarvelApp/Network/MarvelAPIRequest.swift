@@ -23,6 +23,7 @@ class MarvelAPIRequest: MarvelRequest {
         }
         
         let url = MarvelAPIConfig.bashURL + MarvelAPIConfig.pathCharacters + queryParams.queryString! + MarvelAPIConfig.getPermissions()
+        print("url:", url)
 
         Alamofire.request(url).responseJSON { (response) in
             let statusCode = response.response?.statusCode

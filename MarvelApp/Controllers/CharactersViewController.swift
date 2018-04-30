@@ -9,11 +9,13 @@
 import UIKit
 import EZYGradientView
 
-class CharactersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class CharactersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var infoLoadingCharacters: UIView!
     @IBOutlet weak var infoLoadingCharConstraint: NSLayoutConstraint!
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var stackViewHeroes: UIStackView!
     
     let fetchCharacter = MarvelAPIRequest()
     var characters: [MarvelCharacter] = []
@@ -40,11 +42,22 @@ class CharactersViewController: UIViewController, UITableViewDelegate, UITableVi
         gradientView.fadeIntensity = 1
         view.insertSubview(gradientView, at: 0)
         
+        setupSearchBar()
         fetchData()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    private func setupSearchBar() {
+        searchBar.tintColor = UIColor.white
+        
+        let searchTextField: UITextField? = searchBar.value(forKey: "searchField") as? UITextField
+        if searchTextField!.responds(to: #selector(getter: UITextField.attributedPlaceholder)) {
+            let attributeDict = [NSAttributedStringKey.foregroundColor: UIColor.white.withAlphaComponent(0.5)]
+            searchTextField!.attributedPlaceholder = NSAttributedString(string: "Search your heroes...", attributes: attributeDict)
+        }
     }
     
     private func fetchData() {
@@ -58,6 +71,11 @@ class CharactersViewController: UIViewController, UITableViewDelegate, UITableVi
                 self.tableView.reloadData()
                 self.isLoadingCharacters = false
                 self.hideLoadingMoreCharacters()
+                self.hideLoadingHeroes()
+                
+                print("success")
+                print("total: \(self.total)")
+                print("characters: \(self.characters.count)")
                 
             case .serverError(let description):
                 print("Server error: \(description) \n")
@@ -73,9 +91,12 @@ class CharactersViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     private func disposeData(){
-        characters = [];
+        currentPage = 0
+        characters = []
+        tableView.reloadData()
         characterSearch = ""
         fetchData()
+        showLoadingHeroes()
     }
     
     private func showLoadingMoreCharacters() {
@@ -95,7 +116,46 @@ class CharactersViewController: UIViewController, UITableViewDelegate, UITableVi
             
         }
     }
-
+    
+    private func showLoadingHeroes() {
+        UIView.animate(withDuration: 0.25, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+            self.stackViewHeroes.alpha = 1
+        }) { (success) in
+            
+        }
+    }
+    
+    private func hideLoadingHeroes() {
+        UIView.animate(withDuration: 0.3, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+            self.stackViewHeroes.alpha = 0
+        }) { (success) in
+            
+        }
+    }
+    
+    
+    public func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        resignFirstResponder()
+        if let search = searchBar.text {
+            characters = [];
+            tableView.reloadData()
+            currentPage = 0;
+            characterSearch = search
+            fetchData()
+            view.endEditing(true)
+            showLoadingHeroes()
+        }
+        
+        print(" searchBarSearchButtonClicked ")
+    }
+    
+    public func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        view.endEditing(true)
+        disposeData()
+        searchBar.text = ""
+        print(" searchBarCancelButtonClicked ")
+    }
+    
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //print("hero: ", self.characters[indexPath.row])
         
@@ -114,6 +174,7 @@ class CharactersViewController: UIViewController, UITableViewDelegate, UITableVi
             showLoadingMoreCharacters()
             currentPage += 1
             fetchData()
+            print(" willDisplay ")
         }
     }
     

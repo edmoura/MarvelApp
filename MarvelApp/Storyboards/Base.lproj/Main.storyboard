@@ -21,7 +21,7 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Characters-->
+        <!--Heroes-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="charactersViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="CharactersViewController" customModule="MarvelApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -32,9 +32,17 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YfK-D2-Ha0">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <searchBar key="tableHeaderView" contentMode="redraw" barStyle="black" searchBarStyle="minimal" showsCancelButton="YES" id="VE9-fb-McP">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="BYZ-38-t0r" id="RUU-gK-7uH"/>
+                                    </connections>
+                                </searchBar>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="marvelCell" rowHeight="110" id="xwe-ie-VVX" customClass="MarvelCharactersTableViewCell" customModule="MarvelApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="110"/>
+                                        <rect key="frame" x="0.0" y="84" width="375" height="110"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xwe-ie-VVX" id="JjY-aI-mfH">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="110"/>
@@ -128,12 +136,28 @@
                                     <constraint firstAttribute="height" constant="50" id="a7o-0j-h1L"/>
                                 </constraints>
                             </view>
+                            <stackView opaque="NO" alpha="0.0" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="RZh-S0-BfT">
+                                <rect key="frame" x="115" y="268" width="146" height="67"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="bm5-u7-t13">
+                                        <rect key="frame" x="54.5" y="0.0" width="37" height="37"/>
+                                    </activityIndicatorView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading Heroes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TaF-WN-h2X">
+                                        <rect key="frame" x="0.0" y="42" width="146" height="25"/>
+                                        <fontDescription key="fontDescription" name="VAGRoundedBT-Regular" family="VAG Rounded" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.13725490196078433" green="0.12156862745098039" blue="0.12549019607843137" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="BcT-oy-7Oi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="2zS-Gb-ci7"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="BcT-oy-7Oi" secondAttribute="bottom" constant="-50" id="6o8-RC-DSn"/>
+                            <constraint firstItem="RZh-S0-BfT" firstAttribute="centerX" secondItem="YfK-D2-Ha0" secondAttribute="centerX" id="LK6-Rb-9xD"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="YfK-D2-Ha0" secondAttribute="bottom" id="RdJ-S1-ekM"/>
+                            <constraint firstItem="RZh-S0-BfT" firstAttribute="centerY" secondItem="YfK-D2-Ha0" secondAttribute="centerY" id="aUi-Zl-EMB"/>
                             <constraint firstItem="YfK-D2-Ha0" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="eJs-sE-YnD"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="YfK-D2-Ha0" secondAttribute="trailing" id="hkH-Wt-cti"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="BcT-oy-7Oi" secondAttribute="trailing" id="jCY-co-Zvh"/>
@@ -141,12 +165,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Characters" largeTitleDisplayMode="never" id="d0h-MB-nRc">
+                    <navigationItem key="navigationItem" title="Heroes" largeTitleDisplayMode="never" id="d0h-MB-nRc">
                         <barButtonItem key="backBarButtonItem" title="Back" id="8zP-62-1tN"/>
                     </navigationItem>
                     <connections>
                         <outlet property="infoLoadingCharConstraint" destination="6o8-RC-DSn" id="fpl-Uk-G4M"/>
                         <outlet property="infoLoadingCharacters" destination="BcT-oy-7Oi" id="KEr-6b-eXW"/>
+                        <outlet property="searchBar" destination="VE9-fb-McP" id="078-Yp-3S4"/>
+                        <outlet property="stackViewHeroes" destination="RZh-S0-BfT" id="FRS-I0-r8u"/>
                         <outlet property="tableView" destination="YfK-D2-Ha0" id="4H4-OO-mJ0"/>
                     </connections>
                 </viewController>

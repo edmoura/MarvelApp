@@ -1,5 +1,3 @@
-# README #
-
 ### What is this repository for? ###
 
 * Marvel app
@@ -11,6 +9,13 @@ This project uses [Bundler](http://bundler.io) and [CocoaPods](https://cocoapods
 
 * bundle
 * bundle exec pod install
+
+__Marvel API Keys__
+
+* public: 07192b175494aaa26abcfe1278924da8
+* private: 12ab8c05e745151fdef686cb306fe92f4090d4c6
+
+___or you can use your own.___
 
 ### Who do I talk to? ###
 

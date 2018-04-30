@@ -11,17 +11,11 @@ import ObjectMapper
 
 struct MarvelInfo: Mappable {
     
-    var code: Int
-    var status: String
-    var data: MarvelData
+    var code: Int = 0
+    var status: String = ""
+    var data: MarvelData!
     
-    init?(map: Map) {
-        
-        code    = (try? map.value("code")) ?? 0
-        status  = (try? map.value("status")) ?? ""
-        data    = (try? map.value("data")) ?? MarvelData(map: map)!
-        
-    }
+    init?(map: Map) {}
     
     mutating func mapping(map: Map) {
         

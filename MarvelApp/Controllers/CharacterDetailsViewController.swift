@@ -22,6 +22,9 @@ class CharacterDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        labelName.text = ""
+        labelDescription.text = ""
+        
         if let hero = characterChoose {
             
             labelName.text = hero.name

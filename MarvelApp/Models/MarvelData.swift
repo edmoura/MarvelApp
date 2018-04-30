@@ -11,21 +11,13 @@ import ObjectMapper
 
 struct MarvelData: Mappable {
     
-    var offset: Int
-    var limit: Int
-    var total: Int
-    var count: Int
-    var results: [MarvelCharacter]
+    var offset: Int = 0
+    var limit: Int = 0
+    var total: Int = 0
+    var count: Int = 0
+    var results: [MarvelCharacter] = []
     
-    init?(map: Map) {
-        
-        offset      = (try? map.value("offset")) ?? 0
-        limit       = (try? map.value("offset")) ?? 0
-        total       = (try? map.value("offset")) ?? 0
-        count       = (try? map.value("offset")) ?? 0
-        results     = [(try? map.value("results")) ?? MarvelCharacter(map: map)!]
-        
-    }
+    init?(map: Map) {}
     
     mutating func mapping(map: Map) {
         

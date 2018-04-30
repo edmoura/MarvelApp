@@ -25,6 +25,7 @@ class CharactersViewController: UIViewController, UITableViewDelegate, UITableVi
     var isLoadingCharacters = false
     var once = false
     var isLandscape = true
+    var isSearching = false
     var currentPage = 0
     var total = 0
     var characterSearch = ""
@@ -38,7 +39,7 @@ class CharactersViewController: UIViewController, UITableViewDelegate, UITableVi
         tableView.dataSource = self
         tableView.estimatedRowHeight = 110
         tableView.rowHeight = UITableViewAutomaticDimension
-
+        
         setupSearchBar()
         fetchData()
         
@@ -85,7 +86,7 @@ class CharactersViewController: UIViewController, UITableViewDelegate, UITableVi
         case .landscapeLeft, .landscapeRight:
             doGradient(angle: 0)
         default:
-             doGradient(angle: 0)
+            doGradient(angle: 0)
         }
     }
     
@@ -115,6 +116,7 @@ class CharactersViewController: UIViewController, UITableViewDelegate, UITableVi
                 self.characters.append(contentsOf: model.data.results)
                 self.tableView.reloadData()
                 self.isLoadingCharacters = false
+                //self.isSearching = false
                 self.hideLoadingMoreCharacters()
                 self.hideLoadingHeroes()
                 
@@ -190,21 +192,35 @@ class CharactersViewController: UIViewController, UITableViewDelegate, UITableVi
     
     public func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         resignFirstResponder()
+        
         if let search = searchBar.text {
-            characters = [];
-            tableView.reloadData()
-            currentPage = 0;
-            characterSearch = search
-            fetchData()
-            view.endEditing(true)
-            showLoadingHeroes()
+            if !search.isEmpty {
+                characters = [];
+                tableView.reloadData()
+                currentPage = 0;
+                characterSearch = search
+                isSearching = true
+                fetchData()
+                showLoadingHeroes()
+            }
+            else if search.isEmpty && isSearching {
+                disposeData()
+                searchBar.text = ""
+                isSearching = false
+            }
         }
+        
+        view.endEditing(true)
     }
     
     public func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        if isSearching {
+            disposeData()
+            searchBar.text = ""
+            isSearching = false
+        }
+        
         view.endEditing(true)
-        disposeData()
-        searchBar.text = ""
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

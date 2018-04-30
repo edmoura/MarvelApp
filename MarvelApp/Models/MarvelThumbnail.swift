@@ -11,15 +11,10 @@ import ObjectMapper
 
 struct MarvelThumbnail: Mappable {
     
-    var path: String
-    var ext: String
+    var path: String = ""
+    var ext: String = ""
     
-    init?(map: Map) {
-        
-        path    = (try? map.value("path")) ?? ""
-        ext     = (try? map.value("extension")) ?? ""
-        
-    }
+    init?(map: Map) {}
     
     mutating func mapping(map: Map) {
         

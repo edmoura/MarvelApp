@@ -11,21 +11,13 @@ import ObjectMapper
 
 struct MarvelCharacter: Mappable {
     
-    var id: Int
-    var name: String
-    var description: String
-    var thumbnail: MarvelThumbnail
-    var urls: [MarvelCharacterURL]
+    var id: Int = 0
+    var name: String = ""
+    var description: String = ""
+    var thumbnail: MarvelThumbnail!
+    var urls: [MarvelCharacterURL] = []
     
-    init?(map: Map) {
-        
-        id              = (try? map.value("id")) ?? 0
-        name            = (try? map.value("name")) ?? ""
-        description     = (try? map.value("description")) ?? ""
-        thumbnail       = (try? map.value("thumbnail")) ?? MarvelThumbnail(map: map)!
-        urls            = [(try? map.value("urls")) ?? MarvelCharacterURL(map: map)!]
-        
-    }
+    init?(map: Map) {}
     
     mutating func mapping(map: Map) {
         

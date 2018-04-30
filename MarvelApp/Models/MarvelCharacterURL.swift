@@ -11,15 +11,10 @@ import ObjectMapper
 
 struct MarvelCharacterURL: Mappable {
     
-    var type: String
-    var url: String
+    var type: String = ""
+    var url: String = ""
     
-    init?(map: Map) {
-        
-        type    = (try? map.value("type")) ?? ""
-        url     = (try? map.value("url")) ?? ""
-        
-    }
+    init?(map: Map) {}
     
     mutating func mapping(map: Map) {
         

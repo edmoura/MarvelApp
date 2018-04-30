@@ -32,7 +32,7 @@ class CharacterDetailsViewController: UIViewController {
         if let hero = characterChoose {
             
             labelName.text = hero.name
-            labelDescription.text = !hero.description.isEmpty ? hero.description : "--"
+            labelDescription.text = !hero.description.isEmpty ? hero.description : ""
             
             if let url = URL(string: hero.thumbnail.getImageURL()){
                 
@@ -47,6 +47,24 @@ class CharacterDetailsViewController: UIViewController {
             
         }
         
+        self.navigationItem.setRightBarButton(UIBarButtonItem(barButtonSystemItem: .action, target: self, action:#selector(share(_:))), animated: true)
+        
+    }
+    
+    @objc func share(_ sender:UIBarButtonItem!)
+    {
+        let shareName = labelName.text
+        let shareDescription = labelDescription.text
+        
+        let text = shareName! + "\n" + shareDescription!
+        let url = URL(string: (characterChoose?.thumbnail.getImageURL())!)
+        
+        let shareItems:Array = [bigImg.image!, text, url!] as [Any]
+        let wsActivity = WhatsAppActivity()
+        let activityVC = UIActivityViewController(activityItems:shareItems, applicationActivities: [wsActivity])
+        activityVC.popoverPresentationController?.sourceView = self.view
+        present(activityVC, animated: true)
+
     }
     
     override func didReceiveMemoryWarning() {

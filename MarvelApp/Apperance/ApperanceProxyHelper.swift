@@ -14,10 +14,10 @@ struct ApperanceProxyHelper {
     static func customizeNavigationBar() {
         
         let navigationBarAppearace = UINavigationBar.appearance()
-        let redImage = UIImage(color: ColorPalette.red)
-        navigationBarAppearace.tintColor = ColorPalette.white
-        navigationBarAppearace.barTintColor = UIColor(patternImage: redImage!)
-        navigationBarAppearace.shadowImage = redImage
+        //let redImage = UIImage(color: ColorPalette.red)
+        navigationBarAppearace.tintColor = UIColor.white
+        //navigationBarAppearace.barTintColor = UIColor(patternImage: redImage!)
+        navigationBarAppearace.shadowImage = UIImage()
 
     }
     

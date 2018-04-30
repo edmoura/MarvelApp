@@ -38,6 +38,7 @@
 		88BCF20D20963AA3002EA01B /* VAGRounded-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 88BCF20520963AA3002EA01B /* VAGRounded-Black.otf */; };
 		88BCF20E20963AA3002EA01B /* VAGRounded-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 88BCF20620963AA3002EA01B /* VAGRounded-Bold.otf */; };
 		88BCF210209677CE002EA01B /* CharacterDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BCF20F209677CE002EA01B /* CharacterDetailsViewController.swift */; };
+		88BCF2122096B202002EA01B /* Whatsapp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BCF2112096B202002EA01B /* Whatsapp.swift */; };
 		D9B4A6E7E6DAE2C9E549C504 /* Pods_MarvelApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB40BE7A3DF33CE8E9444CED /* Pods_MarvelApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -108,6 +109,7 @@
 		88BCF20520963AA3002EA01B /* VAGRounded-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VAGRounded-Black.otf"; sourceTree = "<group>"; };
 		88BCF20620963AA3002EA01B /* VAGRounded-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VAGRounded-Bold.otf"; sourceTree = "<group>"; };
 		88BCF20F209677CE002EA01B /* CharacterDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsViewController.swift; sourceTree = "<group>"; };
+		88BCF2112096B202002EA01B /* Whatsapp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Whatsapp.swift; sourceTree = "<group>"; };
 		8B0B97977B400C65DBA01DCF /* Pods-MarvelAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MarvelAppTests/Pods-MarvelAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B99AF3C9223834C64C868C8C /* Pods-MarvelApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-MarvelApp/Pods-MarvelApp.release.xcconfig"; sourceTree = "<group>"; };
 		CB2B7B84B9C337B4A3115A38 /* Pods-MarvelAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MarvelAppTests/Pods-MarvelAppTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -277,6 +279,7 @@
 				88BCF1EF20951EE7002EA01B /* Dictionary+queryString.swift */,
 				88BCF1F720952A93002EA01B /* ColorPalette.swift */,
 				88BCF1FC209615BB002EA01B /* UIImage+colorImage.swift */,
+				88BCF2112096B202002EA01B /* Whatsapp.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -514,6 +517,7 @@
 				88BCF1F820952A93002EA01B /* ColorPalette.swift in Sources */,
 				88BCF1E22094DC73002EA01B /* MarvelThumbnail.swift in Sources */,
 				88BCF1F620952A23002EA01B /* ApperanceProxyHelper.swift in Sources */,
+				88BCF2122096B202002EA01B /* Whatsapp.swift in Sources */,
 				88BCF1FB209604BA002EA01B /* MarvelCharactersTableViewCell.swift in Sources */,
 				88BCF1E920951135002EA01B /* MarvelRequest.swift in Sources */,
 				88BCF1D42094CEC4002EA01B /* MarvelData.swift in Sources */,

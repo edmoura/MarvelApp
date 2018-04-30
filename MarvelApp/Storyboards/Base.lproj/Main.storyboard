@@ -198,6 +198,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="imgLaunchScreen" destination="h1h-V4-fdG" id="DZl-tt-CZf"/>
+                        <outlet property="imgLaunchScreenConstraint" destination="lvM-xG-Yrc" id="SRQ-Pj-IfQ"/>
                         <outlet property="infoLoadingCharConstraint" destination="6o8-RC-DSn" id="fpl-Uk-G4M"/>
                         <outlet property="infoLoadingCharacters" destination="BcT-oy-7Oi" id="KEr-6b-eXW"/>
                         <outlet property="searchBar" destination="VE9-fb-McP" id="078-Yp-3S4"/>

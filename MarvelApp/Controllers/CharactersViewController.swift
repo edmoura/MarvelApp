@@ -18,6 +18,7 @@ class CharactersViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var stackViewHeroes: UIStackView!
     @IBOutlet weak var imgLaunchScreen: UIImageView!
     @IBOutlet weak var stackLaunchScreen: UIStackView!
+    @IBOutlet weak var imgLaunchScreenConstraint: NSLayoutConstraint!
     
     let fetchCharacter = MarvelAPIRequest()
     var characters: [MarvelCharacter] = []
@@ -40,6 +41,11 @@ class CharactersViewController: UIViewController, UITableViewDelegate, UITableVi
 
         setupSearchBar()
         fetchData()
+        
+        if UIDevice.current.orientation == UIDeviceOrientation.landscapeLeft || UIDevice.current.orientation == UIDeviceOrientation.landscapeRight {
+            imgLaunchScreenConstraint.constant = -16.5
+        }
+        
     }
     
     override func didReceiveMemoryWarning() {

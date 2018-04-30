@@ -31,6 +31,7 @@ class MarvelAPIRequest: MarvelRequest {
             case .success(let value):
                 let resultValue = value as? [String: Any]
                 if statusCode == 200{
+                    //print("resultValue: ", resultValue)
                     let model = Mapper<MarvelInfo>().map(JSONObject:resultValue)
                     onComplete(.success(model: model!))
                 }

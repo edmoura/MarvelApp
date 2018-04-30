@@ -1,6 +1,7 @@
 project 'MarvelApp.xcodeproj'
 
 platform :ios, '9.1'
+source 'https://github.com/CocoaPods/Specs.git'
 inhibit_all_warnings!
 use_frameworks!
 
@@ -45,10 +46,10 @@ end
 target 'MarvelAppTests' do
 
   use_frameworks!
+  inherit! :search_paths
 
   pod 'Quick'
   pod 'Nimble'
-  pod 'Fakery'
   pod 'ObjectMapper'
 
 end

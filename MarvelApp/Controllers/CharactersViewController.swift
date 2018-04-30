@@ -8,6 +8,7 @@
 
 import UIKit
 import EZYGradientView
+import ObjectMapper
 
 class CharactersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
@@ -116,13 +117,13 @@ class CharactersViewController: UIViewController, UITableViewDelegate, UITableVi
                 self.characters.append(contentsOf: model.data.results)
                 self.tableView.reloadData()
                 self.isLoadingCharacters = false
-                //self.isSearching = false
                 self.hideLoadingMoreCharacters()
                 self.hideLoadingHeroes()
                 
                 /*print("success")
                  print("total: \(self.total)")
                  print("characters: \(self.characters.count)")*/
+                //print(self.characters)
                 
             case .serverError(let description):
                 print("Server error: \(description) \n")

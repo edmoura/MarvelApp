@@ -239,10 +239,12 @@ class CharactersViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath){
-        if indexPath.row == (characters.count - 1) && !isLoadingCharacters && characters.count != total {
-            showLoadingMoreCharacters()
-            currentPage += 1
-            fetchData()
+        if indexPath.row > 1 {
+            if indexPath.row == (characters.count - 1) && !isLoadingCharacters && characters.count != total {
+                showLoadingMoreCharacters()
+                currentPage += 1
+                fetchData()
+            }
         }
     }
     

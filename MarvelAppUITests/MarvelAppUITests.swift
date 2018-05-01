@@ -18,9 +18,11 @@ class MarvelAppUITests: XCTestCase {
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
         // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
-        XCUIApplication().launch()
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+        //XCUIApplication().launch()
+        
+        let app = XCUIApplication()
+        setupSnapshot(app)
+        app.launch()
     }
     
     override func tearDown() {
@@ -31,6 +33,36 @@ class MarvelAppUITests: XCTestCase {
     func testExample() {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+        snapshot("0Launch")
+        
+        XCUIDevice.shared.orientation = .portrait
+        snapshot("1portrait")
+        sleep(1)
+        XCUIDevice.shared.orientation = .landscapeRight
+        snapshot("2landscapeRight")
+        sleep(1)
+        XCUIDevice.shared.orientation = .portrait
+        
+        let app = XCUIApplication()
+        let tablesQuery = app.tables
+        
+        let backButton = app.navigationBars["Details"].buttons["Back"]
+        
+        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["A-Bomb (HAS)"]/*[[".cells.staticTexts[\"A-Bomb (HAS)\"]",".staticTexts[\"A-Bomb (HAS)\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        snapshot("3Details")
+        sleep(1)
+        
+        XCUIDevice.shared.orientation = .landscapeRight
+        snapshot("4DetailslandscapeRight")
+        
+        let aBombHasElement = app.scrollViews.otherElements.containing(.staticText, identifier:"A-Bomb (HAS)").element
+        aBombHasElement.tap()
+        aBombHasElement.swipeLeft()
+        XCUIDevice.shared.orientation = .portrait
+        backButton.tap()
+        XCUIDevice.shared.orientation = .faceUp
+
     }
     
 }

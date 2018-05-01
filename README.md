@@ -18,10 +18,3 @@ __Marvel API Keys__
 __Generate SnaptShop__
 
 * bundle exec fastlane snapshot
-
-### Who do I talk to? ###
-
-* Edson Moura
-* (11) 93802 2029
-* edson@lovetatoo.com.br
-* edson@brando.ie

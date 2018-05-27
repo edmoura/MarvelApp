@@ -1,6 +1,6 @@
 ### What is this repository for? ###
 
-* Marvel app
+* Marvel app to learn Swift 4;
 * 1.0.0
 
 ### How do I get set up? ###
@@ -16,5 +16,8 @@ __Marvel API Keys__
 * private: 12ab8c05e745151fdef686cb306fe92f4090d4c6
 
 __Generate SnaptShop__
-
 * bundle exec fastlane snapshot
+
+Feel free to download, to change, to learn, do every you like =)
+
+*http://www.mokacoding.com/

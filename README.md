@@ -18,6 +18,6 @@ __Marvel API Keys__
 __Generate SnaptShop__
 * bundle exec fastlane snapshot
 
-Feel free to download, to change, to learn, do every you like =)
+Feel free to download, to change, to learn, do as you wish =)
 
 *http://www.mokacoding.com/
